@@ -11,5 +11,7 @@ module.exports = {
     "^@src/(.*)$": "<rootDir>/src/$1",
     "^@animations/(.*)$": "<rootDir>/src/animations/$1",
     "^@ui/(.*)$": "<rootDir>/src/ui/$1",
+    "^@assets/(.*)$": "<rootDir>/assets/$1",
+    "^@lottiefiles/(.*)$": "<rootDir>/assets/lottie_files/$1",
   },
 };

@@ -47,13 +47,13 @@ import { analyzeSentiment } from '@src/sentiment.js';
 
       const sentimentScore = analyzeSentiment(userMessage);
       if (sentimentScore > 0) {
-        playAnimation("/src/animations/lottie_files/happy.json"); // Happy animation
+        playAnimation("@lottiefiles/happy.json"); // Happy animation
         animationEl.textContent = "😊 [Happy Animation]";
       } else if (sentimentScore < 0) {
-        playAnimation("/src/animations/lottie_files/sad.json"); // Sad animation
+        playAnimation("@lottiefiles/sad.json"); // Sad animation
         animationEl.textContent = "😟 [Sad Animation]";
       } else {
-        playAnimation("/src/animations/lottie_files/neutral.json"); // Neutral animation
+        playAnimation("@lottiefiles/neutral.json"); // Neutral animation
         animationEl.textContent = "😐 [Neutral Animation]";
       }
 

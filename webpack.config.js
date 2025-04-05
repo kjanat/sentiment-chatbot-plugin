@@ -23,6 +23,8 @@ module.exports = {
       "@src": path.resolve(__dirname, "src"),
       "@animations": path.resolve(__dirname, "@src/animations"),
       "@ui": path.resolve(__dirname, "@src/ui"),
+      "@assets": path.resolve(__dirname, "assets"),
+      "@lottiefiles": path.resolve(__dirname, "@assets/lottie_files"),
     },
     extensions: [".js", ".json"],
   },
