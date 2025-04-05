@@ -1,12 +1,33 @@
 /**
- * analyzeSentiment(text) - Placeholder function for sentiment analysis.
- * In a real implementation, this would use a library (e.g., Sentiment.js or VADER) 
- * to return a sentiment score or category for the given text.
+ * analyzeSentiment(text) - Implements basic sentiment analysis by counting positive and negative words.
+ * Returns a score: positive for positive sentiment, negative for negative sentiment, and 0 for neutral.
  */
 function analyzeSentiment(text) {
-    // TODO: integrate a real sentiment analysis (e.g., Sentiment.js or VADER)
-    // For now, return 0 as neutral sentiment.
-    return 0;
+    const positiveWords = [
+        'happy', 'good', 'great', 'fantastic', 'excellent', 'amazing', 
+        'joyful', 'positive', 'wonderful', 'delightful', 'cheerful', 'pleasant'
+    ];
+    const negativeWords = [
+        'sad', 'bad', 'terrible', 'awful', 'horrible', 'worst', 
+        'depressing', 'negative', 'dreadful', 'unpleasant', 'miserable', 'tragic'
+    ];
+
+    // Normalize text: convert to lower-case and remove punctuation.
+    const words = text.toLowerCase().replace(/[^\w\s]/g, '').split(/\s+/);
+    let score = 0;
+
+    words.forEach(word => {
+        if (positiveWords.includes(word)) {
+            score++;
+        } else if (negativeWords.includes(word)) {
+            score--;
+        }
+    });
+    return score;
 }
 
-module.exports = analyzeSentiment;
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = analyzeSentiment;
+} else {
+    window.analyzeSentiment = analyzeSentiment;
+}

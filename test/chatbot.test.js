@@ -1,16 +1,18 @@
-describe('Chatbot functionality', () => {
-    it('should respond with a greeting', () => {
-        const response = chatbot.getResponse('Hello');
-        expect(response).toBe('Hi there!');
+const { getResponse } = require('../src/chatbot');
+
+describe('Chatbot Response', () => {
+    test('returns "Hi there!" when input contains "hello"', () => {
+        expect(getResponse("Hello")).toBe("Hi there!");
+        expect(getResponse("Hey, hello everyone")).toBe("Hi there!");
     });
 
-    it('should respond with a farewell', () => {
-        const response = chatbot.getResponse('Goodbye');
-        expect(response).toBe('See you later!');
+    test('returns "See you later!" when input contains "goodbye"', () => {
+        expect(getResponse("Goodbye")).toBe("See you later!");
+        expect(getResponse("time to say goodbye")).toBe("See you later!");
     });
 
-    it('should handle unknown input', () => {
-        const response = chatbot.getResponse('What is your name?');
-        expect(response).toBe('I am a chatbot.');
+    test('returns "I am a chatbot." for other input', () => {
+        expect(getResponse("How are you?")).toBe("I am a chatbot.");
+        expect(getResponse("Random text")).toBe("I am a chatbot.");
     });
 });
