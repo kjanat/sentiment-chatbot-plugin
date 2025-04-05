@@ -1,12 +1,13 @@
+import lottie from 'lottie-web';
+import analyzeSentiment from './sentiment.js';
+
 (function () {
-    let analyzeSentiment;
-    if (typeof require === 'function') {
-        analyzeSentiment = require('./sentiment');
-    } else {
-        analyzeSentiment = window.analyzeSentiment;
+    // Log an error if analyzeSentiment is not defined
+    if (typeof analyzeSentiment !== 'function') {
+        console.error("analyzeSentiment is not defined. Ensure that sentiment.js is loaded before chatbot.js.");
     }
 
-    // Helper function for generating a chatbot response based on input.
+    // Helper function for generating a chatbot response based on input
     function getResponse(userMessage) {
         const lowerCaseInput = userMessage.toLowerCase();
         if (lowerCaseInput.includes('hello')) {
@@ -18,24 +19,39 @@
         }
     }
 
+    // Function to load and play animations
+    function playAnimation(animationPath) {
+        const animationEl = document.getElementById('animation-placeholder');
+        animationEl.innerHTML = ''; // Clear previous animation
+        lottie.loadAnimation({
+            container: animationEl,
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: animationPath, // Path to the animation JSON file
+        });
+    }
+
     // Initialization or state variables
     const userInputEl = document.getElementById('user-input');
     const sendBtn = document.getElementById('send-btn');
     const chatBubbleEl = document.getElementById('chat-bubble');
     const animationEl = document.getElementById('animation-placeholder');
 
-    // Only add event listener if elements exist (i.e. we're in the browser)
     if (sendBtn && userInputEl && chatBubbleEl && animationEl) {
         sendBtn.addEventListener('click', () => {
             const userMessage = userInputEl.value.trim();
             if (!userMessage) return;
-            
+
             const sentimentScore = analyzeSentiment(userMessage);
             if (sentimentScore > 0) {
+                playAnimation('/assets/lottie_files/happy.json'); // Happy animation
                 animationEl.textContent = "😊 [Happy Animation]";
             } else if (sentimentScore < 0) {
+                playAnimation('/assets/lottie_files/sad.json'); // Sad animation
                 animationEl.textContent = "😟 [Sad Animation]";
             } else {
+                playAnimation('/assets/lottie_files/neutral.json'); // Neutral animation
                 animationEl.textContent = "😐 [Neutral Animation]";
             }
 
@@ -44,7 +60,6 @@
         });
     }
 
-    // Export getResponse for tests
     if (typeof module !== 'undefined' && module.exports) {
         module.exports = { getResponse };
     } else {

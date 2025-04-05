@@ -19,3 +19,9 @@ jobs:
       run: npm run lint
     - name: Run Tests
       run: npm test
+    - name: Run Prettier
+      run: npm run format
+    - name: Run TypeScript
+      run: npm run typecheck
+    - name: Run Build
+      run: npm run build
