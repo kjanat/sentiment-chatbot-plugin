@@ -1,7 +1,7 @@
 module.exports = {
-  testEnvironment: 'jest-environment-jsdom',
+  testEnvironment: "jest-environment-jsdom",
   collectCoverage: true,
-  coverageDirectory: 'coverage',
-  testMatch: ['**/test/**/*.test.js'],
+  coverageDirectory: "coverage",
+  testMatch: ["**/test/**/*.test.js"],
   verbose: true,
 };

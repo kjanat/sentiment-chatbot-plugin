@@ -1,58 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <title>Sentiment Chatbot Demo</title>
     <style>
-        /* Basic styles for chat UI */
-        #chat-container {
-            width: 300px;
-            padding: 1em;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
+      /* Basic styles for chat UI */
+      #chat-container {
+        width: 300px;
+        padding: 1em;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
 
-        #chat-bubble {
-            background: #f1f1f1;
-            padding: 10px;
-            border-radius: 10px;
-            margin-bottom: 10px;
-        }
+      #chat-bubble {
+        background: #f1f1f1;
+        padding: 10px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+      }
 
-        #animation-placeholder {
-            height: 100px;
-            margin: 10px 0;
-            /* space for animations */
-        }
+      #animation-placeholder {
+        height: 100px;
+        margin: 10px 0;
+        /* space for animations */
+      }
 
-        #user-input {
-            width: 80%;
-            padding: 5px;
-        }
+      #user-input {
+        width: 80%;
+        padding: 5px;
+      }
 
-        #send-btn {
-            padding: 5px 10px;
-        }
+      #send-btn {
+        padding: 5px 10px;
+      }
     </style>
-    <!-- Scripts: Sentiment analysis and chatbot logic -->
-    <!-- <script src="src/chatbot.js"></script> -->
-    <!-- Lottie for animations -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
-    <!-- <script src="dist/bundle.js"></script> -->
-</head>
+  </head>
 
-<body>
+  <body>
     <div id="chat-container">
-        <!-- Chatbot's message bubble (initial greeting or responses) -->
-        <div id="chat-bubble">🤖 Hello! I am a sentiment-aware chatbot. How can I help you?</div>
-        <!-- Placeholder for animations (e.g., Lottie animations will be rendered here) -->
-        <div id="animation-placeholder" style="width: 500px; height: 500px;"></div>
-        <!-- User input box and send button -->
-        <input type="text" id="user-input" placeholder="Type your message..." />
-        <button id="send-btn">Send</button>
+      <!-- Chatbot's message bubble (initial greeting or responses) -->
+      <div id="chat-bubble">
+        🤖 Hello! I am a sentiment-aware chatbot. How can I help you?
+      </div>
+      <!-- Placeholder for animations (e.g., Lottie animations will be rendered here) -->
+      <div id="animation-placeholder"></div>
+      <!-- User input box and send button -->
+      <input type="text" id="user-input" placeholder="Type your message..." />
+      <button id="send-btn">Send</button>
     </div>
     <script src="dist/bundle.js"></script>
-</body>
-
+  </body>
 </html>

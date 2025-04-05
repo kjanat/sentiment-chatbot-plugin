@@ -1,5 +1,5 @@
-const helloWorld = () => 'Hello, World!';
+const helloWorld = () => "Hello, World!";
 
-test('returns expected output', () => {
-    expect(helloWorld()).toBe('Hello, World!');
+test("returns expected output", () => {
+  expect(helloWorld()).toBe("Hello, World!");
 });
