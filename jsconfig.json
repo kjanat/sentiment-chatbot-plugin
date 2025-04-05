@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "esnext",
+    "baseUrl": "./",
+    "paths": {
+      "@animations/*": ["src/animations/*"],
+      "@ui/*": ["src/ui/*"]
+    }
+  },
+  "include": ["src/**/*", "test/**/*"],
+}

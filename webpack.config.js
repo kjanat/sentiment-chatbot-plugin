@@ -4,7 +4,7 @@ module.exports = {
   entry: "./src/chatbot.js",
   output: {
     filename: "bundle.js",
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "dist")
   },
   mode: "development",
   module: {
@@ -13,12 +13,20 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
-        },
-      },
-    ],
+          loader: "babel-loader"
+        }
+      }
+    ]
   },
   resolve: {
-    extensions: [".js"],
+    alias: {
+      "@src": path.resolve(__dirname, "src"),
+      "@animations": path.resolve(__dirname, "@src/animations"),
+      "@ui": path.resolve(__dirname, "@src/ui"),
+    },
+    extensions: [".js", ".json"],
   },
+  devServer: {
+    contentBase: "./dist"
+  }
 };

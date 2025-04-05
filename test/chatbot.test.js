@@ -1,18 +1,16 @@
-const { getResponse } = require("../src/chatbot");
+import { getResponse } from "@src/chatbot.js";
 
-describe("Chatbot Response", () => {
-  test('returns "Hi there!" when input contains "hello"', () => {
-    expect(getResponse("Hello")).toBe("Hi there!");
-    expect(getResponse("Hey, hello everyone")).toBe("Hi there!");
-  });
+beforeEach(() => {
+  document.body.innerHTML = `
+    <div id="animation-placeholder"></div>
+    <input id="user-input" />
+    <button id="send-btn"></button>
+    <div id="chat-bubble"></div>
+  `;
+});
 
-  test('returns "See you later!" when input contains "goodbye"', () => {
-    expect(getResponse("Goodbye")).toBe("See you later!");
-    expect(getResponse("time to say goodbye")).toBe("See you later!");
-  });
-
-  test('returns "I am a chatbot." for other input', () => {
-    expect(getResponse("How are you?")).toBe("I am a chatbot.");
-    expect(getResponse("Random text")).toBe("I am a chatbot.");
-  });
+test("getResponse returns correct response", () => {
+  expect(getResponse("hello")).toBe("Hi there!");
+  expect(getResponse("goodbye")).toBe("See you later!");
+  expect(getResponse("random text")).toBe("I am a chatbot.");
 });

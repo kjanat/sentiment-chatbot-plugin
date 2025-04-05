@@ -1,53 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Sentiment Chatbot Demo</title>
-    <style>
-      /* Basic styles for chat UI */
-      #chat-container {
-        width: 300px;
-        padding: 1em;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-      }
 
-      #chat-bubble {
-        background: #f1f1f1;
-        padding: 10px;
-        border-radius: 10px;
-        margin-bottom: 10px;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <title>Sentiment Chatbot Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      font-size: x-large;
+      background-color: #f9f9f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      align-content: space-around;
+      align-items: stretch;
+      justify-content: center;
+    }
 
-      #animation-placeholder {
-        height: 100px;
-        margin: 10px 0;
-        /* space for animations */
-      }
+    /* Basic styles for chat UI */
+    #chat-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      width: 60vw;
+      padding: 1em;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      height: 80vh;
+    }
 
-      #user-input {
-        width: 80%;
-        padding: 5px;
-      }
+    #chat-bubble {
+      background: #f1f1f1;
+      padding: 10px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
 
-      #send-btn {
-        padding: 5px 10px;
-      }
-    </style>
-  </head>
+    #animation-placeholder {
+      height: 100px;
+      margin: 10px 0;
+      /* space for animations */
+    }
 
-  <body>
-    <div id="chat-container">
-      <!-- Chatbot's message bubble (initial greeting or responses) -->
-      <div id="chat-bubble">
-        🤖 Hello! I am a sentiment-aware chatbot. How can I help you?
-      </div>
-      <!-- Placeholder for animations (e.g., Lottie animations will be rendered here) -->
-      <div id="animation-placeholder"></div>
-      <!-- User input box and send button -->
+    #interaction-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 10px;
+      flex: 1;
+      max-height: min-content;
+      width: 100%;
+    }
+
+    #user-input {
+      width: 100%;
+      padding: 5px;
+    }
+
+    #send-btn {
+      padding: 5px 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="chat-container">
+    <!-- Chatbot's message bubble (initial greeting or responses) -->
+    <div id="chat-bubble">
+      🤖 Hello! I am a sentiment-aware chatbot. How can I help you?
+    </div>
+    <!-- Placeholder for animations (e.g., Lottie animations will be rendered here) -->
+    <div id="animation-placeholder"></div>
+    <!-- User input box and send button -->
+    <div id="interaction-container">
       <input type="text" id="user-input" placeholder="Type your message..." />
       <button id="send-btn">Send</button>
     </div>
-    <script src="dist/bundle.js"></script>
-  </body>
+  </div>
+  <script src="dist/bundle.js"></script>
+</body>
+
 </html>

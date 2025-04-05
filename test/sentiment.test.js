@@ -1,18 +1,24 @@
-const analyzeSentiment = require("../src/sentiment");
+import { sentimentScore } from "@src/sentiment.js";
 
 describe("Sentiment Analysis", () => {
-  test("returns a positive score for a positive sentence", () => {
-    const text = "I am feeling fantastic and amazing today!";
-    expect(analyzeSentiment(text)).toBeGreaterThan(0);
+  it("should return a positive score for positive input", () => {
+    const result = sentimentScore("I love this!");
+    // 1 or higher is considered positive
+    expect(result).toBeGreaterThanOrEqual(1);
   });
 
-  test("returns a negative score for a negative sentence", () => {
-    const text = "It is a terrible and horrible day.";
-    expect(analyzeSentiment(text)).toBeLessThan(0);
+  it("should return a negative score for negative input", () => {
+    const result = sentimentScore("I hate this!");
+    expect(result).toBeLessThanOrEqual(-1);
   });
 
-  test("returns 0 for a neutral sentence", () => {
-    const text = "I went to the store to buy some milk.";
-    expect(analyzeSentiment(text)).toBe(0);
+  it("should return zero for neutral input", () => {
+    const result = sentimentScore("This is okay.");
+    expect(result).toBe(0);
+  });
+
+  it("should handle empty input", () => {
+    const result = sentimentScore("");
+    expect(result).toBe(0);
   });
 });
