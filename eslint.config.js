@@ -1,16 +1,24 @@
-module.exports = {
-    root: true,
-    parserOptions: {
-        ecmaVersion: "latest",
-        sourceType: "module"
-    },
-    env: {
-        browser: true,
-        node: true,
-        es2021: true
-    },
-    extends: "eslint:recommended",
-    rules: {
-        // your custom rules here
+module.exports = [
+    {
+        languageOptions: {
+            parserOptions: {
+                ecmaVersion: "latest",
+                sourceType: "module"
+            },
+            globals: {
+                // Browser globals
+                window: "readonly",
+                document: "readonly",
+                navigator: "readonly",
+                // Node globals
+                require: "readonly",
+                module: "writable",
+                process: "readonly",
+                global: "readonly"
+            }
+        },
+        rules: {
+            // your custom rules here
+        }
     }
-};
+];
