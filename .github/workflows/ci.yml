@@ -18,7 +18,7 @@ concurrency:
 jobs:
   lint:
     name: Lint and Test
-    if: github.event_name != 'pull_request'
+    if: github.event_name != 'pull_request' || github.event.pull_request.labels.*.name == 'preview'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -51,7 +51,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 18
       - name: Clean install
         run: npm ci
       - name: Build Project
@@ -59,12 +59,19 @@ jobs:
       - name: Copy static files
         run: |
           mkdir -p site
-          cp -r dist/* site/dist
-          cp index.html site/index.html
+          mkdir -p site/dist
+          if [ -d "dist" ]; then cp -r dist/* site/dist/; else echo "dist directory does not exist"; fi
+          if [ -f "index.html" ]; then cp index.html site/index.html; else echo "index.html file does not exist"; fi
       - name: Upload static files as artifact
+        # This action uploads the static files to be used by the deploy-pages action for GitHub Pages deployment
         id: deployment
         uses: actions/upload-pages-artifact@v3
         with:
           path: site/
+        outputs:
+          artifact_path: site
+          artifact_name: static-files
+          artifact_url: ${{ steps.deployment.outputs.artifact_url }}
+      # This step deploys the static files to GitHub Pages using the artifact uploaded in the previous step.
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
