@@ -8,5 +8,5 @@
       "@ui/*": ["src/ui/*"]
     }
   },
-  "include": ["src/**/*", "test/**/*"],
+  "include": ["src/**/*", "tests/**/*"]
 }

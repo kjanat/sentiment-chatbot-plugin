@@ -1,11 +1,11 @@
 import lottie from "lottie-web";
-import { analyzeSentiment } from '@src/sentiment.js';
+import { analyzeSentiment } from "@src/sentiment.js";
 
 (function () {
   // Log an error if analyzeSentiment is not defined
   if (typeof analyzeSentiment !== "function") {
     console.error(
-      "analyzeSentiment is not defined. Ensure that sentiment.js is loaded before chatbot.js."
+      "analyzeSentiment is not defined. Ensure that sentiment.js is loaded before chatbot.js.",
     );
   }
 
@@ -43,7 +43,9 @@ import { analyzeSentiment } from '@src/sentiment.js';
   if (sendBtn && userInputEl && chatBubbleEl && animationEl) {
     sendBtn.addEventListener("click", () => {
       const userMessage = userInputEl.value.trim();
-      if (!userMessage) { return; };
+      if (!userMessage) {
+        return;
+      }
 
       const sentimentScore = analyzeSentiment(userMessage);
       if (sentimentScore > 0) {
